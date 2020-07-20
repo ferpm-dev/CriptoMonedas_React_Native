@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, Platform, Dimensions} from 'react-native';
+import {StyleSheet, Text, Dimensions} from 'react-native';
 import {Colors} from '../colors';
 import {Picker} from '@react-native-community/picker';
 import axios from 'axios';
