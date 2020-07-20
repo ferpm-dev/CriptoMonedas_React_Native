@@ -10,7 +10,7 @@ const height = Dimensions.get('window').height;
 const Form = () => {
   const [moneda, guardarMoneda] = useState('');
   const [criptomoneda, guardarCriptomoneda] = useState('');
-  const [criptomonedas, guardarCriptomonedas] = useState('');
+  const [criptomonedas, guardarCriptomonedas] = useState([]);
 
   useEffect(() => {
     const questionAPI = async () => {
