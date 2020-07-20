@@ -26,12 +26,17 @@ const Form = () => {
     guardarMoneda(moneda);
   };
 
+  const obtenerCriptoMoneda = (cripto) => {
+    guardarCriptomoneda(cripto);
+  };
+
   return (
     <>
       <Text style={styles.txtForm}>Moneda</Text>
       <Picker
         selectedValue={moneda}
-        onValueChange={(moneda) => obtenerMoneda(moneda)}>
+        onValueChange={(moneda) => obtenerMoneda(moneda)}
+        itemStyle={styles.picker}>
         <Picker.Item label="-Seleccione-" value="" />
         <Picker.Item label="Dolar de Estados Unidos" value="USD" />
         <Picker.Item label="Peso Argentino" value="ARS" />
@@ -42,8 +47,9 @@ const Form = () => {
 
       <Text style={styles.txtForm}>CriptoMoneda</Text>
       <Picker
-        selectedValue={moneda}
-        onValueChange={(moneda) => obtenerMoneda(moneda)}>
+        selectedValue={criptomoneda}
+        onValueChange={(cripto) => obtenerCriptoMoneda(cripto)}
+        itemStyle={styles.picker}>
         <Picker.Item label="-Seleccione-" value="" />
         {criptomonedas.map((cripto) => (
           <Picker.Item
@@ -62,11 +68,16 @@ const styles = StyleSheet.create({
     fontFamily: 'PlayfairDisplay-Bold',
     textTransform: 'uppercase',
     letterSpacing: 5,
-    backgroundColor: Colors.light,
+    backgroundColor: Colors.black,
+    color: Colors.white,
     fontSize: height * 0.014,
     textAlign: 'center',
     padding: '2%',
-    marginTop: height * 0.01,
+    // marginTop: height * 0.01,
+  },
+  picker: {
+    height: 120,
+    backgroundColor: Colors.whiteWithTransparen,
   },
 });
 

@@ -13,6 +13,7 @@
 export default {
   grey: 'rgb(70, 70, 70)',
   white: '#FFF',
+  whiteWithTransparen: 'rgba(220, 220, 220, 0.5)',
   lighter: '#F3F3F3',
   light: '#DAE1E7',
   dark: 'rgb(210, 100, 0)',

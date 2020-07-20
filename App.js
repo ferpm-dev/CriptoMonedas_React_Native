@@ -6,6 +6,7 @@ import {
   Platform,
   Dimensions,
   View,
+  ImageBackground,
 } from 'react-native';
 import Header from './src/components/Header.js';
 import Form from './src/components/Form.js';
@@ -23,9 +24,11 @@ const App = () => {
         style={styles.image}
         source={require('./src/assets/img/cripto.jpg')}
       />
-      <View style={styles.contain}>
+      <ImageBackground
+        source={require('./src/assets/img/cripto.jpg')}
+        style={styles.contain}>
         <Form />
-      </View>
+      </ImageBackground>
     </>
   );
 };
@@ -37,7 +40,10 @@ const styles = StyleSheet.create({
     height: 270,
   },
   contain: {
-    marginHorizontal: '2,5%',
+    width: width,
+    height: height * 0.6,
+    // resizeMode: 'cover',
+    opacity: 0.4,
   },
 });
 export default App;
