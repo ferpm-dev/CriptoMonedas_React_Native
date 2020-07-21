@@ -8,7 +8,7 @@ const height = Dimensions.get('window').height;
 const Header = () => {
   return (
     <>
-      <Text style={styles.txtHeader}>criptomonedas</Text>
+      <Text style={styles.txtHeader}>criptochange</Text>
     </>
   );
 };

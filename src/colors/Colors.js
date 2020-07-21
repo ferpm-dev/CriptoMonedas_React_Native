@@ -16,7 +16,7 @@ export default {
   whiteWithTransparen: 'rgba(220, 220, 220, 0.5)',
   lighter: '#F3F3F3',
   light: '#DAE1E7',
-  dark: 'rgb(210, 100, 0)',
+  dark: 'rgb(140, 110, 0)',
   orange: 'rgb(120, 14, 58)',
   black: 'black',
   header: 'rgba(160, 145, 30, 1)',

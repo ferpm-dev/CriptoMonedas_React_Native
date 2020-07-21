@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: width,
     height: height * 0.6,
     // resizeMode: 'cover',
-    opacity: 0.4,
+    opacity: 0.9,
   },
 });
 export default App;
