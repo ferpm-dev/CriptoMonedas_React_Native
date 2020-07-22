@@ -20,12 +20,12 @@ const App = () => {
     <>
       {/* <StatusBar barStyle="dark-content" /> */}
       <Header />
-      <Image
+      {/* <Image
         style={styles.image}
-        source={require('./src/assets/img/cripto.jpg')}
-      />
+        source={require('./src/assets/img/backAnimate.png')}
+      /> */}
       <ImageBackground
-        source={require('./src/assets/img/cripto.jpg')}
+        source={require('./src/assets/img/criptoDarkC.jpg')}
         style={styles.contain}>
         <Form />
       </ImageBackground>
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
   },
   contain: {
     width: width,
-    height: height * 0.6,
-    // resizeMode: 'cover',
+    height: height - 50,
+    resizeMode: 'cover',
     opacity: 0.9,
   },
 });

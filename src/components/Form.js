@@ -14,26 +14,26 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const Form = () => {
-  const [currency, saveCurrency] = useState('');
-  const [criptocurrency, saveCriptocurrency] = useState('');
-  const [criptocurrencies, saveCurrencies] = useState([]);
+  const [currency, setCurrency] = useState('');
+  const [criptocurrency, setCriptocurrency] = useState('');
+  const [criptocurrencies, setCurrencies] = useState([]);
 
   useEffect(() => {
     const questionAPI = async () => {
       const url =
         'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
       const result = await axios.get(url);
-      saveCurrencies(result.data.Data);
+      setCurrencies(result.data.Data);
     };
     questionAPI();
   }, []);
 
   const getCurrency = (currency) => {
-    saveCurrency(currency);
+    setCurrency(currency);
   };
 
   const getCriptocurrency = (cripto) => {
-    saveCriptocurrency(cripto);
+    setCriptocurrency(cripto);
   };
 
   const quotePrice = () => {
@@ -62,7 +62,7 @@ const Form = () => {
         <Picker.Item label="Libra Esterlina" value="GBP" />
       </Picker>
 
-      <Text style={styles.txtForm}>criptomoneda</Text>
+      <Text style={styles.txtForm2}>criptomoneda</Text>
       <Picker
         selectedValue={criptocurrency}
         onValueChange={(cripto) => getCriptocurrency(cripto)}
@@ -85,6 +85,7 @@ const Form = () => {
 
 const styles = StyleSheet.create({
   txtForm: {
+    marginTop: height * 0.35,
     fontFamily: 'PlayfairDisplay-Bold',
     textTransform: 'uppercase',
     letterSpacing: 5,
@@ -94,6 +95,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: '2%',
     // marginTop: height * 0.01,
+  },
+  txtForm2: {
+    fontFamily: 'PlayfairDisplay-Bold',
+    textTransform: 'uppercase',
+    letterSpacing: 5,
+    backgroundColor: Colors.black,
+    color: Colors.white,
+    fontSize: height * 0.016,
+    textAlign: 'center',
+    padding: '2%',
   },
   picker: {
     height: 120,

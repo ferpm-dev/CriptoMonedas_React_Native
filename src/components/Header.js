@@ -8,7 +8,7 @@ const height = Dimensions.get('window').height;
 const Header = () => {
   return (
     <>
-      <Text style={styles.txtHeader}>criptochange</Text>
+      <Text style={styles.txtHeader}>criptobank</Text>
     </>
   );
 };
@@ -16,12 +16,12 @@ const Header = () => {
 const styles = StyleSheet.create({
   txtHeader: {
     paddingTop: Platform.OS === 'ios' ? height * 0.07 : height * 0.012,
-    paddingBottom: 12,
+    paddingBottom: 15,
     backgroundColor: Colors.header,
     fontFamily: 'PlayfairDisplay-Italic',
-    fontSize: height * 0.027,
+    fontSize: height * 0.024,
     textAlign: 'center',
-    letterSpacing: 10,
+    letterSpacing: 14,
     color: Colors.white,
   },
 });

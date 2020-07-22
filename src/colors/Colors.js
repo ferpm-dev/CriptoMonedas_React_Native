@@ -19,5 +19,5 @@ export default {
   dark: 'rgb(140, 110, 0)',
   orange: 'rgb(120, 14, 58)',
   black: 'black',
-  header: 'rgba(160, 145, 30, 1)',
+  header: 'rgba(71, 72, 84, 1)',
 };
