@@ -28,8 +28,9 @@ const Form = () => {
     questionAPI();
   }, []);
 
-  const getCurrency = (currency) => {
-    setCurrency(currency);
+  const getCurrency = (badge) => {
+    setCurrency(badge);
+    console.log(badge);
   };
 
   const getCriptocurrency = (cripto) => {
@@ -52,7 +53,7 @@ const Form = () => {
       <Text style={styles.txtForm}>Divisa</Text>
       <Picker
         selectedValue={currency}
-        onValueChange={(currency) => getCurrency(currency)}
+        onValueChange={(badge) => getCurrency(badge)}
         itemStyle={styles.picker}>
         <Picker.Item label="-Seleccione-" value="" />
         <Picker.Item label="Dolar de Estados Unidos" value="USD" />
