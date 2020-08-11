@@ -26,7 +26,7 @@ const Form = ({
   useEffect(() => {
     const questionAPI = async () => {
       const url =
-        'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+        'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=40&tsym=USD';
       const result = await axios.get(url);
       setCurrencies(result.data.Data);
     };
