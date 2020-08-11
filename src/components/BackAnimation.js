@@ -3,8 +3,8 @@ import {Animated, StyleSheet, View, Easing} from 'react-native';
 
 import {Colors} from '../colors';
 
-const App = () => {
-  const positionBack = useRef(new Animated.ValueXY({x: 0, y: 870})).current;
+const BackAnimation = () => {
+  const positionBack = useRef(new Animated.ValueXY({x: 0, y: 900})).current;
   const scale = useRef(new Animated.Value(0.4)).current;
 
   const rotateBack = positionBack.y.interpolate({
@@ -61,14 +61,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.black,
+    opacity: 1,
   },
   img: {
     position: 'absolute',
-    width: 2000,
-    height: 2000,
+    width: 1700,
+    height: 1700,
     resizeMode: 'contain',
-    opacity: 0.4,
+    opacity: 1,
   },
 });
 
-export default App;
+export default BackAnimation;

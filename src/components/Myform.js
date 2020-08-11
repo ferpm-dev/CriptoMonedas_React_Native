@@ -1,19 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  View,
   StyleSheet,
   Text,
-  Dimensions,
   TouchableHighlight,
   Alert,
-  View,
+  Dimensions,
 } from 'react-native';
-import {Colors} from '../colors';
 import {Picker} from '@react-native-community/picker';
 import axios from 'axios';
+import {Colors} from '../colors';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
 const Form = ({
   currency,
   setCurrency,
@@ -21,14 +20,14 @@ const Form = ({
   setCriptocurrency,
   setQuestionAPI,
 }) => {
-  const [criptocurrencies, setCurrencies] = useState([]);
+  const [criptocurrencies, setCriptocurrencies] = useState([]);
 
   useEffect(() => {
     const questionAPI = async () => {
       const url =
-        'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+        'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=40&tsym=USD';
       const result = await axios.get(url);
-      setCurrencies(result.data.Data);
+      setCriptocurrencies(result.data.Data);
     };
     questionAPI();
   }, []);
@@ -42,7 +41,7 @@ const Form = ({
     setCriptocurrency(cripto);
   };
 
-  const quotePrice = () => {
+  const cotizarPrecio = () => {
     if (currency.trim() === '' || criptocurrency.trim() === '') {
       showAlert();
       return;
@@ -51,16 +50,16 @@ const Form = ({
   };
 
   const showAlert = () => {
-    Alert.alert('Error..', 'Ambos campos son obligatorios', [{text: 'OK'}]);
+    Alert.alert('Error...', 'Ambos campos son obligatorios', [{text: 'Ok'}]);
   };
 
   return (
     <>
-      <View style={styles.containForm}>
+      <View style={styles.contPicker}>
         <Picker
+          itemStyle={styles.picker}
           selectedValue={currency}
-          onValueChange={(badge) => getCurrency(badge)}
-          itemStyle={styles.picker}>
+          onValueChange={(badge) => getCurrency(badge)}>
           <Picker.Item label="-Seleccionar divisa-" value="" />
           <Picker.Item label="Dolar de Estados Unidos" value="USD" />
           <Picker.Item label="Euro" value="EUR" />
@@ -76,12 +75,13 @@ const Form = ({
           <Picker.Item label="Yen de Japón" value="JPY" />
           <Picker.Item label="Rublo" value="RUB" />
         </Picker>
-
+      </View>
+      <View style={styles.contPicker}>
         <Picker
+          itemStyle={styles.picker}
           selectedValue={criptocurrency}
-          onValueChange={(cripto) => getCriptocurrency(cripto)}
-          itemStyle={styles.picker}>
-          <Picker.Item label="-Seleccionar cripto-" value="" />
+          onValueChange={(cripto) => getCriptocurrency(cripto)}>
+          <Picker.Item label="Seleccione Criptomoneda" value="" />
           {criptocurrencies.map((cripto) => (
             <Picker.Item
               key={cripto.CoinInfo.Id}
@@ -90,45 +90,41 @@ const Form = ({
             />
           ))}
         </Picker>
-        <TouchableHighlight
-          style={styles.quoteBtn}
-          onPress={() => quotePrice()}>
-          <Text style={styles.quoteBtnTxt}>Cotizar</Text>
-        </TouchableHighlight>
       </View>
+
+      <TouchableHighlight style={styles.btn} onPress={() => cotizarPrecio()}>
+        <Text style={styles.txtBtn}>Cotizar</Text>
+      </TouchableHighlight>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  contPicker: {
+    width: '100%',
+    opacity: 1,
+  },
   picker: {
-    height: 140,
+    width: '100%',
+    height: height * 0.16,
     backgroundColor: Colors.whiteWithTransparen,
-    marginHorizontal: 20,
-    borderRadius: 10,
-    marginTop: 20,
+    borderRadius: 6,
+    marginVertical: 5,
   },
-  quoteBtn: {
-    backgroundColor: Colors.dark,
-    padding: 9,
-    marginTop: 20,
-    marginHorizontal: 20,
-    borderRadius: 10,
+  btn: {
+    marginVertical: 5,
+    width: '100%',
+    backgroundColor: Colors.black,
+    justifyContent: 'center',
+    borderRadius: 5,
   },
-  quoteBtnTxt: {
-    fontWeight: '600',
-    letterSpacing: 9,
+  txtBtn: {
+    padding: 6,
+    fontSize: 22,
     color: Colors.white,
-    fontSize: height * 0.019,
+    fontWeight: '400',
+    letterSpacing: 2,
     textAlign: 'center',
   },
-  containForm: {
-    // paddingBottom: height / 50,
-    width: width,
-    // height: height,
-    opacity: 1,
-    // justifyContent: 'flex-end',
-  },
 });
-
 export default Form;
